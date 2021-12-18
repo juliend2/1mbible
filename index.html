@@ -2,24 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>1MegaBible</title>
 </head>
 <body>
     <h1>1MegaBible</h1>
-
     <script src="./bz2/index.min.js"></script>
     <script type="module">
-        let response = await fetch('/bible.txt.bz2');
+        let response = await fetch('bible.txt.bz2');
         let buff = await response.arrayBuffer(); 
         const decompressedUint8Array = bz2.decompress(new Uint8Array(buff))
         var string = new TextDecoder("utf-8").decode(decompressedUint8Array);
         console.log(string.slice(0, 1000).split(/\n?(\d+:\d+) /g))
-        
     </script>
 </body>
 </html>
