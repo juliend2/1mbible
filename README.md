@@ -18,16 +18,17 @@ I use this as my dev server:
 python -m http.server 8000
 ```
 
-Use [terser](https://github.com/terser/terser) to compile. Here's the command:
+Use [terser](https://github.com/terser/terser) to compile the JavaScript, and [UglifyCSS](https://www.npmjs.com/package/uglifycss) to compile the CSS.
 
 ```bash
 terser script.js -m -o script.min.js
+uglifycss style.css > style.min.css
 ```
 
 Make sure it all fits within 1MB (what is needed for the site to function):
 
 ```bash
-du -bs --exclude=.git --exclude=bz2/LICENSE --exclude=Makefile --exclude=bible.txt --exclude=script.js --exclude=README.md
+du -bs --exclude=.git --exclude=bz2/LICENSE --exclude=Makefile --exclude=bible.txt --exclude=script.js --exclude=README.md --exclude=style.css
 ```
 
 ## Thanks
