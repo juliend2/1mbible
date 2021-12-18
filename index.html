@@ -13,7 +13,18 @@
         let buff = await response.arrayBuffer(); 
         const decompressedUint8Array = bz2.decompress(new Uint8Array(buff))
         var string = new TextDecoder("utf-8").decode(decompressedUint8Array);
-        console.log(string.slice(0, 1000).split(/\n?(\d+:\d+) /g))
+        // console.log(string.slice(0, 1000).split(/\n?(\d+:\d+) /g))
+        // shall => $s
+        // lord => $l
+        // LORD => $L
+        // that => $T
+        // their => $t
+        // thou => $o
+        // they => $y
+        // have => $h
+        // from => $f
+        // when => $w
+
     </script>
 </body>
 </html>
