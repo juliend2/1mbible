@@ -1,4 +1,6 @@
-# 1mbible
+# 1MBible
+
+Small app to read the Bible in your browser. The code AND the holy scriptures fit in 1MB. And that's the main point of this project.
 
 King James Version of the Bible taken here: [https://github.com/mxw/grmr](https://raw.githubusercontent.com/mxw/grmr/master/src/finaltests/bible.txt)
 
@@ -23,5 +25,5 @@ terser script.js -m -o script.min.js
 Make sure it all fits within 1MB (what is needed for the site to function):
 
 ```bash
-du -bs --exclude=.git --exclude=bz2/LICENSE --exclude=Makefile --exclude=bible.txt --exclude=script.js
+du -bs --exclude=.git --exclude=bz2/LICENSE --exclude=Makefile --exclude=bible.txt --exclude=script.js --exclude=README.md
 ```
