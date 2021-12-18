@@ -1,13 +1,18 @@
 const DEBUG = false
 const DEBUG_LENGHT = 312400
 // Download and decompress bzip2:
-let resp = await fetch('bible.txt.bz2');
-let buff = await resp.arrayBuffer(); 
-const decompressed = bz2.decompress(new Uint8Array(buff))
-var string = new TextDecoder("utf-8").decode(decompressed);
+if (!localStorage.getItem('txt', string)) {
+    let resp = await fetch('bible.txt.bz2')
+    let buff = await resp.arrayBuffer()
+    const decompressed = bz2.decompress(new Uint8Array(buff))
+    var string = new TextDecoder("utf-8").decode(decompressed)
+    localStorage.setItem('txt', string)
+} else {
+    var string = localStorage.getItem('txt', string)
+}
 // Decompress extra compression:
-var d = {'$s':'shall','$l':'lord','$L':'LORD','$t':'their','$T':'that','$o':'thou','$y':'they','$h':'have','$f':'from','$w':'when'};
-Object.keys(d).forEach(k=>{string=string.replace(new RegExp(`\\${k}`, 'g'),d[k])})
+var replaces = {'$s':'shall','$l':'lord','$L':'LORD','$t':'their','$T':'that','$o':'thou','$y':'they','$h':'have','$f':'from','$w':'when'};
+Object.keys(replaces).forEach(k=>{string=string.replace(new RegExp(`\\${k}`, 'g'),replaces[k])})
 var verseTokens = string.slice(0, DEBUG ? DEBUG_LENGHT : -1).split(/\n?(\d+:\d+) /g).slice(1)
 var verses = []
 for (var i=0;i<verseTokens.length;i++) {
@@ -26,5 +31,14 @@ for (let i = 0; i < verses.length; i++) {
         books[books.length-1].push(verses[i])
     }
 }
-
+window.book = function(bookIndex) {
+    render(bookIndex)
+}
+function render(bookIndex) {
+    console.log('bookIndex', bookIndex)
+    const d = document
+    var body = d.querySelector('body')
+    body.innerHTML = `<select onchange="book(this.value)">${books.map((b,i)=>`<option value="${i}">${chapterTitles[i]}</option>`)}</select>`
+}
+render(0)
 console.log(books)
