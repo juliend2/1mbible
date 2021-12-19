@@ -23,19 +23,6 @@ async function load(){
             verses[verses.length-1].push(verseTokens[i])
         }
     }
-    function getChapters(verses) {
-        var chapters = []
-        var currentChapter = 0
-        for (let i = 0; i < verses.length; i++) {
-            currentChapter = verses[i][0].split(':')[0]
-            if (chapters[chapters.length-1] == currentChapter) {
-                chapters[chapters.length-1].push([currentChapter, verses[i]])
-            } else {
-                chapters.push([currentChapter, verses[i]])
-            }
-        }
-        return chapters
-    }
     const bookTitles = ["Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua","Judges","Ruth","1 Samuel","2 Samuel","1 Kings","2 Kings","1 Chronicles","2 Chronicles","Ezra","Nehemiah","Esther","Job","Psalms","Proverbs","Ecclesiastes","Song of Solomon","Isaiah","Jeremiah","Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos","Obadiah","Jonah","Micah","Nahum","Habakkuk","Zephaniah","Haggai","Zechariah","Malachi","Matthew","Mark","Luke","John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians","Ephesians","Philippians","Colossians","1 Thessalonians","2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon","Hebrews","James","1 Peter","2 Peter","1 John","2 John","3 John","Jude","Revelation"]
     var books = []
     for (let i = 0; i < verses.length; i++) {
@@ -79,4 +66,6 @@ async function load(){
     window.currentChapterIndex = 0
     render(window.currentBookIndex, window.currentChapterIndex)
 }
-load()
+window.onload = ()=> {
+    load()
+}
