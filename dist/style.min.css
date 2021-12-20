@@ -1,1 +1,1 @@
-body{font-family:sans-serif;max-width:800px;margin:20px auto;padding:0 10px}div{margin:20px 0}p>span{color:#bbb}
+:root{--verticalMargin:20px}body{font-family:sans-serif;max-width:800px;margin:var(--verticalMargin) auto;padding:0 10px}div{margin:var(--verticalMargin) 0}p>span{color:#bbb}h1{color:#333;text-align:center;line-height:calc(100vh - var(--verticalMargin) * 3)}
