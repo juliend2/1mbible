@@ -56,10 +56,7 @@ async function load(){
     function render(bookIndex, chapterIndex=0) {
         const d = document
         var body = d.querySelector('body')
-        body.innerHTML = `
-            The book of <select onchange="book(this.value)">${books.map((_,i)=>`<option value="${i}" ${bookIndex==i?'selected':''}>${bookTitles[i]}</option>`).join('')}</select>,
-            chapter <select onchange="chapter(this.value)">${Object.keys(books[bookIndex]).map((ci,i)=>`<option value="${i}" ${chapterIndex==i?'selected':''}>${books[bookIndex][ci][0][0].split(':')[0]}</option>`).join('')}</select>
-            <div>${books[window.currentBookIndex][`${parseInt(chapterIndex)+1}`].map(verse=>`<p><span>${verse[0].split(':')[1]}</span> ${verse[1]}</p>`).join('')}</div>`
+        body.innerHTML = `The book of <select onchange="book(this.value)">${books.map((_,i)=>`<option value="${i}" ${bookIndex==i?'selected':''}>${bookTitles[i]}</option>`).join('')}</select>, chapter <select onchange="chapter(this.value)">${Object.keys(books[bookIndex]).map((ci,i)=>`<option value="${i}" ${chapterIndex==i?'selected':''}>${books[bookIndex][ci][0][0].split(':')[0]}</option>`).join('')}</select><div>${books[window.currentBookIndex][`${parseInt(chapterIndex)+1}`].map(verse=>`<p><span>${verse[0].split(':')[1]}</span> ${verse[1]}</p>`).join('')}</div><p class="credits">Made by <a href="https://juliendesrosiers.com">Julien</a></p>`
     }
     
     window.currentBookIndex = 42

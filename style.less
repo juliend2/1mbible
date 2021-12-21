@@ -1,0 +1,30 @@
+@vertical-margin: 20px;
+
+body {
+    font-family: sans-serif;
+    max-width: 800px;
+    margin: @vertical-margin auto;
+    padding: 0 10px;
+}
+div {
+    margin: @vertical-margin 0;
+}
+p > span {
+    color: #bbb;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    line-height: calc(100vh - @vertical-margin * 3);
+}
+
+.credits {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.3;
+}
+.credits:hover {
+    opacity: 1;
+}
